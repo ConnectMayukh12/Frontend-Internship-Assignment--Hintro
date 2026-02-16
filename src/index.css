@@ -1,0 +1,66 @@
+@import url("https://fonts.googleapis.com/css2?family=SN+Pro:ital,wght@0,200..900;1,200..900&display=swap");
+@import "tailwindcss";
+
+:root {
+  font-family: "SN Pro", sans-serif;
+  font-optical-sizing: auto;
+}
+
+body {
+  margin: 0;
+  font-family: inherit;
+}
+
+.image-track-down {
+  animation: scroll-vertical-down 25s linear infinite;
+}
+
+.image-track-up {
+  animation: scroll-vertical-up 25s linear infinite;
+}
+
+@keyframes scroll-vertical-down {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes scroll-vertical-up {
+  0% {
+    transform: translateY(-50%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .image-track-down {
+    animation: scroll-horizontal 10s linear infinite;
+  }
+
+  .image-track-up {
+    animation: scroll-horizontal-reverse 10s linear infinite;
+  }
+
+  @keyframes scroll-horizontal {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  @keyframes scroll-horizontal-reverse {
+    0% {
+      transform: translateX(-50%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+}
