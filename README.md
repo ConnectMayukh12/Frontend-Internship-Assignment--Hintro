@@ -2,6 +2,8 @@
 
 A modern Kanban board application with drag-and-drop functionality, built with React and TypeScript.
 
+## Deployed Link: [Click Here](https://frontend-internship-assignment-hint.vercel.app/)
+
 ## Explanation Video
 
 [Watch the explanation video on Google Drive](https://drive.google.com/file/d/1auaTWzl5eeoWBvCCJt9fXxIjBa_J-v1G/view?pli=1)
