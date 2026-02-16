@@ -4,8 +4,7 @@ A modern Kanban board application with drag-and-drop functionality, built with R
 
 ## Explanation Video
 
-[Watch the explanation video on Google Drive](https://drive.google.com/file/d/1auaTWzl5eeoWBvCCJt9fXxIjBa_J-v1G/view?usp=sharing)
-
+[Watch the explanation video on Google Drive](https://drive.google.com/file/d/1auaTWzl5eeoWBvCCJt9fXxIjBa_J-v1G/view?pli=1)
 
 ## Front-Main Landing Page:
 <img width="1919" height="1038" alt="image" src="https://github.com/user-attachments/assets/582a088b-13fc-4b36-b0b3-808ee2be2264" />
