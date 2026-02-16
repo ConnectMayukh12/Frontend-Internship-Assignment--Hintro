@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { STORAGE_KEYS } from "../utils/storage";
-import { Loader } from "./Loader";
-import "./Loader.css";
 
 export function SignInForm({
   className,
@@ -12,7 +10,6 @@ export function SignInForm({
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
@@ -29,39 +26,33 @@ export function SignInForm({
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
-    setLoading(true);
 
-    // Simulate a small delay for better UX
-    setTimeout(() => {
-      // Hardcoded credentials for demo
-      const validEmail = "intern@demo.com";
-      const validPassword = "intern123";
+    // Hardcoded credentials for demo
+    const validEmail = "intern@demo.com";
+    const validPassword = "intern123";
 
-      if (email === validEmail && password === validPassword) {
-        // Handle remember me
-        if (rememberMe) {
-          localStorage.setItem(STORAGE_KEYS.SAVED_EMAIL, email);
-          localStorage.setItem(STORAGE_KEYS.REMEMBER_ME, "true");
-        } else {
-          localStorage.removeItem(STORAGE_KEYS.SAVED_EMAIL);
-          localStorage.setItem(STORAGE_KEYS.REMEMBER_ME, "false");
-        }
-
-        // Store auth token/session
-        localStorage.setItem(STORAGE_KEYS.AUTH_TOKEN, "demo_token_12345");
-        setLoading(false);
-        navigate("/dashboard");
+    if (email === validEmail && password === validPassword) {
+      // Handle remember me
+      if (rememberMe) {
+        localStorage.setItem(STORAGE_KEYS.SAVED_EMAIL, email);
+        localStorage.setItem(STORAGE_KEYS.REMEMBER_ME, "true");
       } else {
-        setLoading(false);
-        if (email !== validEmail) {
-          setError("Email not found. Try intern@demo.com");
-        } else if (password !== validPassword) {
-          setError("Invalid password. Try intern123");
-        } else {
-          setError("Invalid email or password");
-        }
+        localStorage.removeItem(STORAGE_KEYS.SAVED_EMAIL);
+        localStorage.setItem(STORAGE_KEYS.REMEMBER_ME, "false");
       }
-    }, 500);
+
+      // Store auth token/session
+      localStorage.setItem(STORAGE_KEYS.AUTH_TOKEN, "demo_token_12345");
+      navigate("/dashboard");
+    } else {
+      if (email !== validEmail) {
+        setError("Email not found. Try intern@demo.com");
+      } else if (password !== validPassword) {
+        setError("Invalid password. Try intern123");
+      } else {
+        setError("Invalid email or password");
+      }
+    }
   };
 
   return (
@@ -173,19 +164,9 @@ export function SignInForm({
 
         <button
           type="submit"
-          disabled={loading}
-          className="rounded-lg bg-black px-4 py-2 text-white w-full disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+          className="rounded-lg bg-black px-4 py-2 text-white w-full hover:bg-gray-800 transition"
         >
-          {loading ? (
-            <>
-              <div className="scale-50">
-                <Loader />
-              </div>
-              <span>Signing in...</span>
-            </>
-          ) : (
-            "Sign In"
-          )}
+          Sign In
         </button>
 
         <div className="relative flex items-center gap-4">
